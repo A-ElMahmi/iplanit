@@ -5,16 +5,17 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Dashboard from "./components/Dashboard";
 import NavBar from "./components/NavBar";
-import ProfilePic from "@/public/profile_placeholder.png";
-import PersonIcon from "@/public/person.svg";
-import LogoutIcon from "@/public/logout.svg";
+import ProfileArea from "./components/ProfileArea";
 import TextIncreaseIcon from "@/public/text_increase.svg";
 import TextDecreaseIcon from "@/public/text_decrease.svg";
+import LogoutIcon from "@/public/logout.svg";
 
 
 
 export default function Home() {
   const [fontSize, setFontSize] = useState(16);
+  const [showLogoutDialog, setShowLogoutDialog] = useState(false);
+
 
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontSize}px`;
@@ -32,39 +33,45 @@ export default function Home() {
     <div>
       {/* Top Bar */}
       <div className="top-bar">
-        iplanit
+        <div>iplanit</div>
+        <div className="logout" onClick={() => setShowLogoutDialog(true)} style={{ cursor: 'pointer' }}>
+          <Image src={LogoutIcon} alt="Logout Icon" />
+          <a>Logout</a>
+        </div>
+
       </div>
 
       <div className="container">
-        {/* Profile Area */}
-        <div class="top-strip">
-          <div className="profile-area">
-            <Image src={ProfilePic} alt="Profile image placeholder" />
-            <div className="profile-area-text">
-              <div className="bigger">
-                <Image src={PersonIcon} alt="Person icon" />
-                <a href="#">My Profile</a>
-              </div>
-              <div className="red">
-                <Image src={LogoutIcon} alt="Logout icon" />
-                <a href="#">Logout</a>
-              </div>
-            </div>
-            {/* <div className="profile-area-btns">
-              <button className="smaller" onClick={decreaseFontSize}>
-                <Image src={TextDecreaseIcon} alt="Text Decrease Icon" />
-              </button>
-              <button onClick={increaseFontSize}>
-                <Image src={TextIncreaseIcon} alt="Text Increase Icon" />
-              </button>
-            </div> */}
-          </div>
+        {/* <div className="top-strip"> */}
+          <ProfileArea />
 
-          <NavBar fontSize={fontSize} />
-        </div>
+          <NavBar fontSize={fontSize} first3={true} />
+        {/* </div> */}
+
+        <NavBar fontSize={fontSize} last3={true} />
 
         <Dashboard />
       </div>
+      {showLogoutDialog && (
+  <div className="logout-dialog">
+    <div className="dialog-box">
+      <p>Do you want to leave?</p>
+      <div className="dialog-buttons">
+        <button onClick={() => setShowLogoutDialog(false)}>No, Go back</button>
+        <button
+          onClick={() => {
+            // Replace with actual logout logic
+            alert("Logged out!");
+            setShowLogoutDialog(false);
+          }}
+        >
+          Yes, Goodbye 👋🏻
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

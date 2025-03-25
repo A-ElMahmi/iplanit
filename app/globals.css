@@ -12,8 +12,10 @@
   --primary-blue: #483DFC;
   --primary-red: #F51A1A;
   --grey-outline: #bcbcbc;
+  --grey-background: #8D8D8D;
 
-  --side-spacing: 5vw;
+  /* --side-spacing: 5vw; */
+  --container-width: 90vw;
   --border-radius: 10px;
 }
 
@@ -46,31 +48,52 @@ a {
 
 .top-bar {
   background-color: var(--primary-blue);
-  padding: 1.5rem calc(1rem + var(--side-spacing));
+  /* padding: 1.5rem calc(1rem + var(--side-spacing)); */
+  padding: 1.5rem calc((100vw - var(--container-width)) / 2);
 
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   color: white;
   font-size: 1.5rem;
   font-weight: 900;
+  /* letter-spacing: 0.1rem; */
+}
+
+.top-bar > div {
   letter-spacing: 0.1rem;
 }
 
+.top-bar .logout {
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
 .container {
-  margin: 6rem var(--side-spacing) 1rem;
+  /* margin: 6rem var(--side-spacing) 1rem; */
+  width: var(--container-width);
+  margin: 6rem auto 1rem;
 }
 
 .profile-area {
-
   display: flex;
   gap: 1rem;
   align-items: flex-start;
 }
 
-.profile-area > img {
+.profile-circle {
+  position: relative;
+}
+
+.profile-circle > img {
   width: 6rem;
   height: 6rem;
 
@@ -78,30 +101,31 @@ a {
   border: 3px solid var(--grey-outline);
 }
 
-.profile-area-text {
+.profile-circle .icon {
+  padding: 0.1rem;
+  width: 2rem;
+  height: 2rem;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  background-color: var(--grey-background);
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.profile-area .icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-area-name {
   flex-grow: 2;
   align-self: center;
 
   font-weight: 500;
-  text-decoration: underline;
-}
-
-.profile-area-text > div {
-  margin-bottom: 0.5rem;
-
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.profile-area-text .bigger {
-  font-size: 1.5rem;
-}
-
-.profile-area-text .red {
-  color: var(--primary-red);
-  text-decoration: underline;
-  text-decoration-color: var(--primary-red);
+  font-size: 2.5rem;
 }
 
 .profile-area-btns {
@@ -137,6 +161,10 @@ a {
 .navbar.single-col {
   grid-template-columns: 1fr;
   gap: 0.5rem;
+}
+
+.navbar.last3 {
+  display: none;
 }
 
 .nav-btn {
@@ -200,25 +228,100 @@ a {
   margin: 0.5rem 0;
 }
 
+
+.logout-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.dialog-buttons button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+
 @media only screen and (min-width: 60rem) {
   :root {
-    /* --side-spacing: 10rem; */
+    /* --side-spacing: min(20vw, 2rem); */
+    --container-width: min(80vw, 70rem);
   }
 
-  .top-strip {
-    display: flex;
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto 2rem auto;
+    gap: 0rem 3rem;
   }
+
+  /* .top-strip {
+    display: flex;
+    grid-column: span 2;
+
+  } */
 
   .navbar {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .navbar > :nth-last-child(-n+3) {
-    border: 2px solid red;
+  .container > .navbar {
+    /* width: 100%; */
+    /* margin-left: 6rem; */
+
+  }
+
+  .navbar.last3 {
+    /* display: block; */
+    /* width: 100%; */
+    /* height: 100%; */
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+  }
+
+  .navbar.first3 > :nth-last-child(-n+3) {
     display: none;
   }
 
+  .profile-area {
+    flex-direction: column;
+    grid-row: span 2;
+
+    text-align: center;
+  }
+
+  .profile-circle {
+    margin-inline: auto;
+  }
+
   .dashboard {
+    grid-row: 2 / span 2;
+    grid-column: 2;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 1rem;
