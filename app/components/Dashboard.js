@@ -1,7 +1,7 @@
 import Image from "next/image";
 import DashboardWidget from "./DashboardWidget";
 import MailIcon from "@/public/mail.svg";
-import CalendarIcon from "@/public/today.svg";
+import CalendarIcon from "@/public/calendar.svg";
 import NotesIcon from "@/public/sticky_note_2.svg";
 import GolfImage from "@/public/golf-stock-image.jpg"
 
@@ -29,7 +29,7 @@ export default function Dashboard() {
               <p>Lunch</p>
               <p>€10</p>
             </div>
-            <div class="widget-image">
+            <div className="widget-image">
               <Image src={GolfImage} alt="Golf Stock Image" />
             </div>
         </DashboardWidget>

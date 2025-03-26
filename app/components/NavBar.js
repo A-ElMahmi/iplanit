@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import NavBtn from "./NavBtn";
 import MailIcon from "@/public/mail.svg";
 import MediaIcon from "@/public/photo_camera.svg";
-import CalendarIcon from "@/public/today.svg";
+import CalendarIcon from "@/public/calendar.svg";
 import PlanIcon from "@/public/edit.svg";
 import ActionsIcon from "@/public/event_lists.svg";
 import NotesIcon from "@/public/sticky_note_2.svg";
