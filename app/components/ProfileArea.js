@@ -1,21 +1,18 @@
 import Image from "next/image";
 import ProfilePic from "@/public/profile_placeholder.png";
 import PersonIcon from "@/public/person.svg";
-import LogoutIcon from "@/public/logout.svg";
 
-export default function ProfileArea() {
-    // Missing function logic
-
+export default function ProfileArea({ profilePic, name, onEditProfile }) {
     return (
         <div className="profile-area">
-            <div className="profile-circle">
-                <Image src={ProfilePic} alt="Profile image placeholder" />
+            <div className="profile-circle" onClick={onEditProfile} style={{ cursor: "pointer" }}>
+                <Image src={profilePic} alt="Profile image"  width={50} height={50} />
                 <div className="icon">
                     <Image src={PersonIcon} alt="Person icon" />
                 </div>
             </div>
             <div className="profile-area-name">
-                <a href="#">Patrick</a>
+                <a href="#" onClick={onEditProfile}>{name}</a>
             </div>
 
             {/* <div className="profile-area-btns">
@@ -27,5 +24,5 @@ export default function ProfileArea() {
               </button>
             </div> */}
         </div>
-    )
+    );
 }

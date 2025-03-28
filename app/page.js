@@ -1,22 +1,22 @@
 "use client";
 
-// import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Dashboard from "./components/Dashboard";
 import NavBar from "./components/NavBar";
 import ProfileArea from "./components/ProfileArea";
 import LogoutDialog from "./components/LogoutDialog";
+import ProfileDialog from "./components/ProfileDialog";
 import TextIncreaseIcon from "@/public/text_increase.svg";
 import TextDecreaseIcon from "@/public/text_decrease.svg";
 import LogoutIcon from "@/public/logout.svg";
 
-
-
 export default function Home() {
   const [fontSize, setFontSize] = useState(16);
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
-
+  const [showProfileDialog, setShowProfileDialog] = useState(false);
+  const [profilePic, setProfilePic] = useState("/profile_placeholder.png");
+  const [name, setName] = useState("Patrick");
 
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontSize}px`;
@@ -30,6 +30,11 @@ export default function Home() {
     setFontSize(Math.max(fontSize - 1, 10));
   };
 
+  const handleProfileSave = (newPic, newName) => {
+    setProfilePic(newPic);
+    setName(newName);
+  };
+
   return (
     <div>
       {/* Top Bar */}
@@ -39,23 +44,20 @@ export default function Home() {
           <Image src={LogoutIcon} alt="Logout Icon" />
           <a>Logout</a>
         </div>
-
       </div>
 
       <div className="container">
-        {/* <div className="top-strip"> */}
-          <ProfileArea />
+        <ProfileArea onEditProfile={() => setShowProfileDialog(true)} profilePic={profilePic} name={name} />
 
-          <NavBar fontSize={fontSize} first3={true} />
-        {/* </div> */}
-
+        <NavBar fontSize={fontSize} first3={true} />
         <NavBar fontSize={fontSize} last3={true} />
-
+        
         <Dashboard />
       </div>
 
+      {/* Dialogs */}
       <LogoutDialog showDialog={showLogoutDialog} setShowDialog={setShowLogoutDialog} />
-
+      <ProfileDialog showDialog={showProfileDialog} setShowDialog={setShowProfileDialog} profilePic={profilePic} name={name} onSave={handleProfileSave} />
     </div>
   );
 }

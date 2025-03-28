@@ -46,7 +46,7 @@ a {
   text-decoration: none;
 }
 
-button {
+button, input {
   font: inherit;
 }
 
@@ -301,6 +301,31 @@ button {
 
 .dialog-box .logout-icon > img {
   filter: invert(1);
+}
+
+.invert > img {
+  filter: invert(1);
+}
+
+.upload-picture {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-decoration: underline;
+
+  /* cursor: pointer; */
+}
+
+.upload-picture img {
+  width: 10rem;
+  height: 10rem;
+
+  border-radius: 50%;
+  border: 3px solid var(--grey-outline);
+}
+
+.upload-picture * {
+  cursor: pointer;
 }
 
 .dialog-buttons {
