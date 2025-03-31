@@ -12,7 +12,7 @@ export default function ProfileArea({ profilePic, name, onEditProfile }) {
                 </div>
             </div>
             <div className="profile-area-name">
-                <a href="#" onClick={onEditProfile}>{name}</a>
+                <p onClick={onEditProfile}>{name}</p>
             </div>
 
             {/* <div className="profile-area-btns">

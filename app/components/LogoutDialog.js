@@ -20,7 +20,7 @@ export default function LogoutDialog({ showDialog, setShowDialog }) {
                     <Image src={CloseIcon} alt="Close Icon" />
                 </button>
                 <p className="title">
-                    <span className="logout-icon"><Image src={LogoutIcon} alt="LogoutIcon" /></span>
+                    <span className="logout-icon invert"><Image src={LogoutIcon} alt="LogoutIcon" /></span>
                     Do you want to leave?
                 </p>
                 <div className="dialog-buttons">

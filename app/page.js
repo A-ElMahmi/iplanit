@@ -58,6 +58,15 @@ export default function Home() {
       {/* Dialogs */}
       <LogoutDialog showDialog={showLogoutDialog} setShowDialog={setShowLogoutDialog} />
       <ProfileDialog showDialog={showProfileDialog} setShowDialog={setShowProfileDialog} profilePic={profilePic} name={name} onSave={handleProfileSave} />
+
+      <div className="text-change-btns">
+        <button onClick={decreaseFontSize}>
+          <Image className="smaller" src={TextDecreaseIcon} alt="Test Decrase Icon" />
+        </button>
+        <button onClick={increaseFontSize}>
+          <Image className="bigger" src={TextIncreaseIcon} alt="Test Decrase Icon" />
+        </button>
+      </div>
     </div>
   );
 }

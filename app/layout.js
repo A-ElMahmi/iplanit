@@ -7,7 +7,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "My Project",
+  title: "iplanit | Home",
   description: "My really cool project",
 };
 

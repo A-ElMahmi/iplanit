@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import PersonIcon from "@/public/person.svg";
 import CloseIcon from "@/public/close.svg";
@@ -14,6 +14,13 @@ export default function ProfileDialog({ showDialog, setShowDialog, profilePic, n
     };
 
     // console.log(showDialog);
+
+    useEffect(() => {
+        if (showDialog) {
+            setNewName(name);  
+            setNewProfilePic(profilePic); 
+        }
+    }, [showDialog, name, profilePic]);
     
     const handleFileUpload = (e) => {
         const imageUrl = URL.createObjectURL(e.target.files[0]);
@@ -25,9 +32,11 @@ export default function ProfileDialog({ showDialog, setShowDialog, profilePic, n
             {showDialog && (
                 <div className="dialog-bg" onClick={() => setShowDialog(false)}>
                     <div className="dialog-box" onClick={(e) => e.stopPropagation()}>
-                        {/* <h2>Edit Profile</h2> */}
+                        <button className="close-icon" onClick={() => setShowDialog(false)}>
+                            <Image src={CloseIcon} alt="Close Icon" />
+                        </button>
                         <p className="title">
-                            <span className="logout-icon"><Image src={PersonIcon} alt="PersonIcon" /></span>
+                            <span className="logout-icon invert"><Image src={PersonIcon} alt="PersonIcon" /></span>
                             Profile
                         </p>
                         <div className="upload-picture">
@@ -52,6 +61,7 @@ export default function ProfileDialog({ showDialog, setShowDialog, profilePic, n
                                 type="text" 
                                 value={newName} 
                                 onChange={(e) => setNewName(e.target.value)} 
+                                className="text-input"
                             />
                         </div>
                         <div className="dialog-buttons">
