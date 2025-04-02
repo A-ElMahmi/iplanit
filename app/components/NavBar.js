@@ -14,8 +14,6 @@ export default function NavBar({ fontSize, first3, last3, all }) {
     const [singleCol, setSingleCol] = useState(false);
 
     useEffect(() => {
-        console.log("triggered fontsize change");
-        
         if (fontSize >= 18) {
             setSingleCol(true)
         } else {

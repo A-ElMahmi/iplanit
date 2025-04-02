@@ -7,7 +7,7 @@ import WaveIcon from "@/public/waving_hand.svg";
 
 export default function LogoutDialog({ showDialog, setShowDialog }) {
     const logoutLogic = () => {
-        alert("Logged out!")
+        // alert("Logged out!")
         setShowDialog(false)
     }
 
@@ -29,8 +29,10 @@ export default function LogoutDialog({ showDialog, setShowDialog }) {
                         No, Go back
                     </button>
                     <button className="yes" onClick={() => logoutLogic()}>
-                        <span><Image src={WaveIcon} alt="Waving Hand Icon"/></span>
-                        Yes, Bye
+                        <a href="/logout">
+                            <span><Image src={WaveIcon} alt="Waving Hand Icon"/></span>
+                            Yes, Bye
+                        </a>
                     </button>
                 </div>
             </div>

@@ -24,6 +24,8 @@ export default function Home() {
     setName(newName);
   };
 
+  console.log(fontSize);
+
   return (
     <div>
       {/* Top Bar */}
