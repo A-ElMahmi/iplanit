@@ -62,7 +62,7 @@ a {
   text-decoration: none;
 }
 
-button, input {
+button, input, a {
   font: inherit;
 }
 
@@ -382,6 +382,11 @@ button, input {
   cursor: pointer;
 }
 
+.dialog-buttons span > img {
+  display: block;
+  margin: auto 0;
+}
+
 .dialog-buttons .yes {
   background-color: #2BD637;
 }
@@ -422,6 +427,19 @@ button, input {
 .text-change-btns .bigger {
   width: 1.7rem;
   height: 1.7rem;
+}
+
+.btn-login {
+  padding: 1rem;
+  margin: 2rem auto;
+  
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+
+  background-color: var(--primary-blue);
+  border-radius: var(--border-radius);
 }
 
 @media only screen and (min-width: 60rem) {
@@ -530,4 +548,22 @@ button, input {
     padding: 1rem 1.5rem;
   }
 
+  .container {
+    min-height: 8rem;
+  }
+
+  .container > h1.logged-out {
+    /* background-color: palegreen; */
+    grid-column: span 2;
+  }
+
+  .container > a:has(> .btn-login) {
+    grid-row: 2;
+    /* grid-column: span 2; */
+    /* justify-self: center; */
+  }
+
+  .btn-login {
+    margin: 0;
+  }
 }

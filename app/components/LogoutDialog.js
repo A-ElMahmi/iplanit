@@ -28,12 +28,13 @@ export default function LogoutDialog({ showDialog, setShowDialog }) {
                         <span><Image src={BackIcon} alt="Back Arrow Icon"/></span>
                         No, Go back
                     </button>
+
+                    <a href="/logout">
                     <button className="yes" onClick={() => logoutLogic()}>
-                        <a href="/logout">
-                            <span><Image src={WaveIcon} alt="Waving Hand Icon"/></span>
-                            Yes, Bye
-                        </a>
+                        <span><Image src={WaveIcon} alt="Waving Hand Icon"/></span>
+                        Yes, Bye
                     </button>
+                    </a>
                 </div>
             </div>
         </div>

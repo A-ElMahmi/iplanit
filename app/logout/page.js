@@ -6,21 +6,21 @@ import TextChangeBtns from "@/app/components/TextChangeBtns";
 export default function LogoutPage() {
     const { fontSize, setFontSize } = useFontSize();
 
-    console.log(fontSize);
-
     return (
         <div>
         {/* Top Bar */}
         <div className="top-bar">
-            <div>iplanit</div>
+            <div><a href="/">iplanit</a></div>
         </div>
 
         <div className="container">
-            <h1>What's up</h1>
-            <p><a href="/">Go Back</a></p>
+            <h1 className="logged-out">You logged out!</h1>
+            <a href="/">
+                <div className="btn-login">Login</div>
+            </a>
         </div>
 
-        <TextChangeBtns fontSize={fontSize} setFontSize={setFontSize} />
+        {/* <TextChangeBtns fontSize={fontSize} setFontSize={setFontSize} /> */}
         </div>
     );
 }

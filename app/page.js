@@ -24,13 +24,11 @@ export default function Home() {
     setName(newName);
   };
 
-  console.log(fontSize);
-
   return (
     <div>
       {/* Top Bar */}
       <div className="top-bar">
-        <div>iplanit</div>
+        <div><a href="/">iplanit</a></div>
         <div className="logout" onClick={() => setShowLogoutDialog(true)} style={{ cursor: 'pointer' }}>
           <Image src={LogoutIcon} alt="Logout Icon" />
           <a>Logout</a>
