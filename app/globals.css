@@ -110,6 +110,7 @@ button, input, a {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+  /* font-size: 2.5rem; */
 }
 
 .profile-circle {
@@ -153,6 +154,7 @@ button, input, a {
 
 .profile-area-name p {
   overflow-wrap: break-word;
+  font-size: 2.5rem;
 }
 
 .profile-area-btns {
